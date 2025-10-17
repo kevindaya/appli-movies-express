@@ -18,26 +18,11 @@ app.get("/movies/add", (req, res) => {
   res.send("Prochainement un formulaire d'ajout");
 });
 
-app.get("/movies-details/:id", (req, res) => {
+app.get("/movies/:id/:title", (req, res) => {
   const id = req.params.id;
-  switch (id) {
-    case "1":
-      res.render("lupin");
-      break;
-    case "2":
-      res.render("tlbdc");
-      break;
-    case "3":
-      res.render("intouchables");
-      break;
-    default:
-      res.send("<b>Oups, pas de films en plus</b>");
-  }
-});
+  const title = req.params.title;
 
-app.get("/movies/:id", (req, res) => {
-  const id = req.params.id;
-  res.send(`film numéro ${id}`);
+  res.render("movies-details", { movieid: id, movietitle: title });
 });
 
 app.get("/", (req, res) => {
